@@ -25,7 +25,7 @@ class AskQuestionRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'body' => 'required|max:1024'
+            'body' => 'required|max:65535'
         ];
     }
 }
