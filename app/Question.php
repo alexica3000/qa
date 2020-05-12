@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Question extends Model
 {
     use VotableTrait;
-    
+
     protected $fillable = ['title', 'body'];
 
     public function user()
