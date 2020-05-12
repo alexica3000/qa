@@ -42,7 +42,7 @@
 {{--                            @include('shared._vote', ['model' => $answer])--}}
                         </div>
                         <div class="media-body">
-                            {!! $answer->body !!}
+                            {!! $answer->body_html !!}
                             <div class="row">
                                 <div class="col-4">
                                     <div class="ml-auto">

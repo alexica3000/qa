@@ -22,6 +22,11 @@ class Question extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
+    public function setBodyAttribute($value)
+    {
+        $this->attributes['body'] = clean($value);
+    }
+
     public function getUrlAttribute()
     {
         return route('questions.show', $this->slug);
@@ -47,6 +52,7 @@ class Question extends Model
     public function getBodyHtmlAttribute()
     {
 //        return ParseDown::instance()->text($this->body);
+        return clean($this->body);
     }
 
     public function answers()
@@ -78,5 +84,15 @@ class Question extends Model
     public function getFavoritesCountAttribute()
     {
         return $this->favorites->count();
+    }
+
+    public function getExcerptAttribute()
+    {
+        return $this->excerpt(250);
+    }
+
+    private function excerpt($length)
+    {
+        return Str::limit(strip_tags($this->body), $length);
     }
 }
